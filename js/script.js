@@ -2,13 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Sticky Navigation Header Shadow on Scroll
     const header = document.querySelector('.header');
+    const scrollToTopButton = document.querySelector('.scroll-to-top');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (header && window.scrollY > 50) {
             header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-        } else {
+        } else if (header) {
             header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
         }
+
+        if (scrollToTopButton) {
+            scrollToTopButton.hidden = window.scrollY <= 300;
+        }
     });
+
+    if (scrollToTopButton) {
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // 2. Shopping Bag Counter & Cart Button Logic
     let cartCount = 0;

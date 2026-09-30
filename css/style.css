@@ -363,3 +363,55 @@ body {
 .services-section i {
   color: #2e7d32;
 }
+
+.contact-section h2 {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.contact-section .card {
+  border: none;
+  border-radius: 12px;
+}
+
+.contact-section .btn-success {
+  background-color: #2e7d32;
+  border: none;
+  font-weight: 600;
+}
+
+.contact-section .btn-success:hover {
+  background-color: #1b5e20;
+}
+
+.scroll-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    aspect-ratio: 1;
+    border: 0;
+    border-radius: 50%;
+    background: var(--primary-green);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-to-top:hover {
+    background: var(--accent-green);
+    transform: translateY(-3px);
+}
+
+.scroll-to-top:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 3px;
+}
+
+.scroll-to-top[hidden] {
+    display: none;
+}
