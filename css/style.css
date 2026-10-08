@@ -69,6 +69,14 @@ body {
     color: var(--accent-green);
 }
 
+header.bg-success .logo-container span {
+    font-size: 22px;
+}
+
+header.bg-success .nav-link {
+    font-size: 14px;
+}
+
 .header-icons {
     display: flex;
     gap: 18px;
