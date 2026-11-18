@@ -423,3 +423,66 @@ header.bg-success .nav-link {
 .scroll-to-top[hidden] {
     display: none;
 }
+
+@media screen and (max-width:768px) {
+   
+    header.bg-success {
+    --bs-bg-opacity: 1;
+    background-color: #3a1c36 !important;
+    }
+
+    .btn-primary {
+    background: #9b71b2 !important;
+
+}
+
+    .btn-cart {
+        background: #9b71b2;
+    }
+
+    .impact-section {
+    background: #3a1c36;
+    }
+
+    .footer {
+    background: #3a1c36;
+    }
+
+    .scroll-to-top {
+    background: #374126;
+    }
+
+   .newsletter-input button {
+    background: #374126;
+   }
+
+   .services-section h2 {
+    color: #374146;
+   }
+
+    .services-section i {
+    color: #374146;
+}
+
+   .bg-success {
+    --bs-bg-opacity: 1;
+    background-color: #3a1636 !important;
+}
+
+.contact-section h2 {
+    color: #374126;
+}
+
+.contact-section .btn-success {
+    background-color: #9b71b2;
+}
+    
+.contact-section .btn-success:hover {
+    background-color: #322838;
+}
+
+.header-icons a {
+    color: #fff;
+}
+
+   }
