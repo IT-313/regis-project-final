@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Sticky Navigation Header Shadow on Scroll
-    const header = document.querySelector('.header');
+
+    // 1. Sticky Navigation Header Shadow on Scroll + Scroll-to-top button
+    const header = document.querySelector('header');
     const scrollToTopButton = document.querySelector('.scroll-to-top');
+
     window.addEventListener('scroll', () => {
         if (header && window.scrollY > 50) {
             header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
@@ -29,21 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
             cartCount++;
-            
+
             // Update the header counter
             if (cartCountElement) {
                 cartCountElement.textContent = `(${cartCount})`;
             }
 
-            // Button Feedback Animation
+            // Button feedback animation
             const originalText = button.textContent;
             button.textContent = 'Added to Cart!';
-            button.style.backgroundColor = '#486a3f'; // Accent green color
+            button.style.backgroundColor = '#486a3f'; // Accent green
             button.disabled = true;
 
             setTimeout(() => {
                 button.textContent = originalText;
-                button.style.backgroundColor = ''; // Reverts to primary CSS color
+                button.style.backgroundColor = ''; // Reverts to CSS color
                 button.disabled = false;
             }, 1200);
         });
@@ -67,21 +68,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Smooth Anchor Scrolling (For Header Navigation Links)
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-    
+    // 4. Smooth Anchor Scrolling + close the mobile menu after tapping a link
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    const mainNav = document.getElementById('mainNav');
+
+    const closeMobileMenu = () => {
+        if (mainNav && mainNav.classList.contains('show') && window.bootstrap) {
+            bootstrap.Collapse.getOrCreateInstance(mainNav).hide();
+        }
+    };
+
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href') || '';
+            const hashIndex = href.indexOf('#');
+
+            // Only handle links that include a #section
+            if (hashIndex !== -1) {
+                const hash = href.slice(hashIndex);
+                const targetSection = hash.length > 1 ? document.querySelector(hash) : null;
+
+                // If the section exists on THIS page, scroll smoothly.
+                // Otherwise (e.g. on services.html), let the browser go to index.html#section.
+                if (targetSection) {
+                    e.preventDefault();
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
+
+            closeMobileMenu();
         });
     });
 
